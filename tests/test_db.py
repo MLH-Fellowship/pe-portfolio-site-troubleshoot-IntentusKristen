@@ -34,10 +34,7 @@ class TestTimelinePost(unittest.TestCase):
         second_post = TimelinePost.create(name='Jane Doe', email='jame@example.com', content='Hello world, I\'m Jane!')
         assert second_post.id == 2
         # Get timeline posts and assert that they are correct
-        timeline_posts = []
-        model_to_dict(p)
-        for p in TimelinePost.select().order_by(TimelinePost.created_at.desc()):
-            timeline_posts.append(p)
+        timeline_posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
         assert len(timeline_posts) == 2
         assert timeline_posts[0].id == 1
         assert timeline_posts[0].name == 'John Doe'
