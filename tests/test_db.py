@@ -37,8 +37,8 @@ class TestTimelinePost(unittest.TestCase):
         timeline_posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
         print(timeline_posts)
         print(timeline_posts[0])
-        self.assertEquals(len(timeline_posts) == 2)
-        self.assertEquals(timeline_posts[0].id == 1)
+        self.assertEquals(len(timeline_posts), 2)
+        self.assertEquals(timeline_posts[0].id, 1)
         assert timeline_posts[0].name == 'John Doe'
         assert timeline_posts[1].id == 2
         assert timeline_posts[1].email == 'jame@example.com'
