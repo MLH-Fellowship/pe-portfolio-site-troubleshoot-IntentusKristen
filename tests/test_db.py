@@ -36,7 +36,7 @@ class TestTimelinePost(unittest.TestCase):
         timeline_posts = []
         for p in TimelinePost.select().order_by(TimelinePost.created_at.desc()):
             timeline_posts.append(p)
-        assert timeline_posts.count() == 2
+        assert len(timeline_posts) == 2
         assert timeline_posts[0].id == 1
         assert timeline_posts[0].name == 'John Doe'
         assert timeline_posts[1].id == 2
