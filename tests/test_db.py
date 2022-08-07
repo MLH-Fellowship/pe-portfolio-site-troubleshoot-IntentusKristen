@@ -39,6 +39,6 @@ class TestTimelinePost(unittest.TestCase):
         print(timeline_posts[0])
         self.assertEquals(len(timeline_posts), 2)
         self.assertEquals(timeline_posts[0].id, 1)
-        assert timeline_posts[0].name == 'John Doe'
-        assert timeline_posts[1].id == 2
-        assert timeline_posts[1].email == 'jame@example.com'
+        self.assertEquals(timeline_posts[0].name, 'John Doe')
+        self.assertEquals(timeline_posts[1].id, 2)
+        self.assertEquals(timeline_posts[1].email, 'jame@example.com')
