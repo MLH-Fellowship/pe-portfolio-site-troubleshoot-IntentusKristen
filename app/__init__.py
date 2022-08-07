@@ -35,11 +35,11 @@ mydb.create_tables([TimelinePost])
 
 @app.route('/')
 def index():
-return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
+    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
 
 @app.route('/timeline')
 def timeline():
-    return rendertemplate('timeline.html', title="Timeline", url=os.getenv("URL"))
+    return render_template('timeline.html', title="Timeline", url=os.getenv("URL"))
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
@@ -68,3 +68,16 @@ def get_time_line_post():
             for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
+
+@app.route('/api/timeline_post', methods=['DELETE'])
+def delete_time_line_post():
+       id = request.form['id']
+       sql = TimelinePost.delete().where(TimelinePost.id == id)
+       sql.execute()
+
+       return {
+              'timeline_posts': [
+                     model_to_dict(p)
+                     for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
+              ]
+       }
