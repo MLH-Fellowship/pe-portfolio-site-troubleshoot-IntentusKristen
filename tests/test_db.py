@@ -1,5 +1,6 @@
 import unittest
 from peewee import *
+from playhouse.shortcuts import model_to_dict
 
 from app import TimelinePost
 
@@ -34,6 +35,7 @@ class TestTimelinePost(unittest.TestCase):
         assert second_post.id == 2
         # Get timeline posts and assert that they are correct
         timeline_posts = []
+        model_to_dict(p)
         for p in TimelinePost.select().order_by(TimelinePost.created_at.desc()):
             timeline_posts.append(p)
         assert len(timeline_posts) == 2
