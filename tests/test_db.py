@@ -34,10 +34,8 @@ class TestTimelinePost(unittest.TestCase):
         assert second_post.id == 2
         # Get timeline posts and assert that they are correct
         timeline_posts = []
-        i = 0
         for p in TimelinePost.select().order_by(TimelinePost.created_at.desc()):
-            timeline_posts[i] = p
-            i += 1
+            timeline_posts.append(p)
         assert timeline_posts.count() == 2
         assert timeline_posts[0].id == 1
         assert timeline_posts[0].name == 'John Doe'
