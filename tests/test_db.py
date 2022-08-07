@@ -35,7 +35,6 @@ class TestTimelinePost(unittest.TestCase):
         # Get timeline posts and assert that they are correct
         timeline_posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
         assert timeline_posts.count() == 2
-        print(timeline_posts[0].id)
         assert timeline_posts[0].id == 1
         assert timeline_posts[0].name == 'John Doe'
         assert timeline_posts[1].id == 2
